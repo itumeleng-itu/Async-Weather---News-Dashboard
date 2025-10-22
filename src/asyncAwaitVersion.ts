@@ -10,7 +10,7 @@ async function processAllInfo(): Promise<void> {
         console.log("And just like that, we are done")
     }
     catch(error){
-        console.error("an error occured", error);
+        console.error("It seems we're running into a bit of an erorr, our technical are on this, rest assured", error);
     }
 }
 processAllInfo()
