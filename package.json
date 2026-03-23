@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "callback": "npm run build && node dist/callbackVersion.js",
+    "promise": "npm run build && node dist/promiseVersion.js",
+    "async": "npm run build && node dist/asyncAwaitVersion.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -30,15 +30,15 @@ fetchWeatherData((error,weatherData) =>{
 
 fetchNews ((error, newsData )=>{
     if(error){
-        console.error("dit is 'n probleem, maar wag terwyl ons dit ondersoek")
+        console.error("There is a problem, please wait while we investigate.")
     }
     if(newsData){
         console.log("")
         console.log("")
-        console.log(`☕ vetkoek and koffie terwyl ek op jou nuus wag ?`);
+        console.log(`☕ donut and coffee while I wait for your news?`);
         console.log("")
         console.log("")
-        console.log("jou nuus is hier, geniet 📰 ");
+        console.log("Your news is here, enjoy! 📰 ");
         console.log("=================================================")
         console.log(newsData);
     }

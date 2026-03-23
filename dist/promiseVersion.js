@@ -4,7 +4,7 @@ const apiConfig_1 = require("./apiConfig");
 function fetchWeatherData() {
     return new Promise((resolve) => {
         setTimeout(() => {
-            console.log("Besig om weerdata te laai");
+            console.log("Busy loading weather data...");
             const wData = (0, apiConfig_1.getWeather)("Polokwane");
             resolve(wData);
         }, 7000);
@@ -13,7 +13,7 @@ function fetchWeatherData() {
 function fetchNews() {
     return new Promise((resolve) => {
         setTimeout(() => {
-            console.log("Besig om nuusdata te laai");
+            console.log("Busy loading news data...");
             const wData = (0, apiConfig_1.getNews)("technology");
             resolve(wData);
         }, 7000);
@@ -21,16 +21,16 @@ function fetchNews() {
 }
 Promise.all([fetchWeatherData(), fetchNews()])
     .then(([weather, news]) => {
-    console.log("\n✅ weerdata:");
+    console.log("\n✅ Weather Data:");
     console.log(weather);
-    console.log("\n📰 nuusdata:");
+    console.log("\n📰 News Data:");
     console.log(news);
 })
-    .catch(err => console.error("Fout tydens die ophaal van data:", err));
+    .catch(err => console.error("Error while fetching data:", err));
 Promise.race([fetchWeatherData(), fetchNews()])
     .then((first) => {
-    console.log("\nEerste data ontvang:");
+    console.log("\nFirst data received:");
     console.log(first);
 })
-    .catch(err => console.error("Fout tydens die ophaal van data:", err));
+    .catch(err => console.error("Error while fetching data:", err));
 //# sourceMappingURL=promiseVersion.js.map

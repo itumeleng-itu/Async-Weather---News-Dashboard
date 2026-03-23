@@ -47,7 +47,7 @@ Each version fetches **weather data** (via [OpenWeatherMap](https://openweatherm
 ## Features
 
 -  **Real-time weather** — Fetches current weather for any city (default: Polokwane)
--  **Latest news** — Retrieves top articles by topic (default: technology)
+-  **Latest news** — Retrieves top articles by topic (default: technology/tech)
 -  **Three async patterns** — Side-by-side comparison of callbacks, promises, and async/await
 -  **Shared API layer** — Centralized `apiConfig.ts` module used by all versions
 -  **Error handling** — Each pattern demonstrates proper error propagation
@@ -126,54 +126,48 @@ NEWS_API_KEY=your_newsapi_api_key
 
 ## Usage
 
-### Build the project
+### Run the examples using npm scripts
 
-Compile TypeScript to JavaScript:
-
-```bash
-npx tsc
-```
-
-### Run the examples
+The easiest way to run the examples is using the pre-configured npm scripts:
 
 #### 1. Callback Version
-
-Uses `setTimeout` to simulate asynchronous delays and callbacks for handling responses.
-
 ```bash
-node dist/callbackVersion.js
+npm run callback
 ```
 
 **What to expect:**
-- Weather data arrives after **~3 seconds**
-- News data arrives after **~6 seconds**
-- Results are independent of each other
+- **Delay**: Uses `setTimeout` to simulate real-world latency (3s for weather, 6s for news).
+- **Behavior**: Requests fire independently.
+- **Logs**: Clear English progress messages.
 
 #### 2. Promise Version
-
-Demonstrates `Promise.all` (wait for everything) and `Promise.race` (first one wins).
-
 ```bash
-node dist/promiseVersion.js
+npm run promise
 ```
 
 **What to expect:**
-- Both requests fire concurrently
-- `Promise.all` waits for **both** to complete (~7 seconds)
-- `Promise.race` resolves with whichever returns **first**
+- **Behavior**: This file demonstrates **two different patterns** in one go:
+  - **`Promise.all`**: Waits for both requests to finish before showing results.
+  - **`Promise.race`**: Prints the response of whichever API finishes first.
+- **Logs**: You will see "Busy loading weather data..." multiple times as both patterns initialize their own fetches.
 
 #### 3. Async/Await Version
-
-Clean, sequential execution using modern syntax.
-
 ```bash
-node dist/asyncAwaitVersion.js
+npm run async
 ```
 
 **What to expect:**
-- Weather data fetched **first**
-- News data fetched **after** weather completes
-- Sequential but readable flow
+- **Behavior**: Executes **sequentially**. It waits for the weather to finish completely before even starting the news request.
+- **Logs**: Clean, step-by-step English logs.
+
+---
+
+### Manual execution (if preferred)
+
+If you'd rather run them manually:
+
+1. **Build the project**: `npx tsc`
+2. **Run a version**: `node dist/callbackVersion.js` (Note the `.js` extension)
 
 ---
 
